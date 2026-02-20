@@ -42,7 +42,7 @@ export default function Home() {
             <textarea className="rounded-xl border px-4 py-3" rows={3} placeholder="Your #1 frustration (optional)"></textarea>
 
             <button
-              type="button"
+              type="submit"
               className="rounded-xl bg-black px-4 py-3 font-semibold text-white hover:opacity-90"
             >
               Join waitlist
