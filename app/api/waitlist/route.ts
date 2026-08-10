@@ -1,10 +1,16 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+function getSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const supabase = createClient(supabaseUrl, serviceKey);
+  if (!supabaseUrl || !serviceKey) {
+    throw new Error("Supabase waitlist configuration is missing");
+  }
+
+  return createClient(supabaseUrl, serviceKey);
+}
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,8 +33,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Machine is required" }, { status: 400 });
     }
 
-    // Upsert prevents duplicates if user submits again
-    const { error } = await supabase
+    // Upsert prevents duplicates if user submits again. Create the client at runtime so secrets are not needed during image build.
+    const { error } = await getSupabaseClient()
       .from("waitlist")
       .upsert({ email, machine, grinder, country, problem }, { onConflict: "email" });
 
