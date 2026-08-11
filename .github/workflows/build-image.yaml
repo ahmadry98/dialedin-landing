@@ -5,6 +5,17 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "public/**"
+      - "Dockerfile"
+      - "package.json"
+      - "package-lock.json"
+      - "next.config.*"
+      - "tsconfig.json"
+      - ".github/workflows/build-image.yaml"
   workflow_dispatch:
     inputs:
       image_tag:
