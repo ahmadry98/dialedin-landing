@@ -61,6 +61,17 @@ const steps = [
   },
 ];
 
+function AppleLogo() {
+  return (
+    <svg className="store-button-icon" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-72.6-19.7-31.5.5-60.9 18.3-77.1 46.6-32.7 56.7-8.3 140.5 23.5 186.5 15.8 22.8 34.6 48.5 59.3 47.6 23.8-1 32.8-15.3 61.4-15.3 28.6 0 36.4 15.3 61.6 14.8 25.4-.5 41.5-22.8 55.3-45.7 29.1-47.6 32.7-93.7 32.7-95.8-.7-.3-62.7-24-62.9-95.3zM260.2 105c24.3-28.8 22.1-55 21.4-64.4-21.5 1.2-46.4 14.6-60.6 31.1-15.6 17.7-24.8 39.6-22.8 63.9 23.2 1.8 44.4-10.2 62-30.6z"
+      />
+    </svg>
+  );
+}
+
 function AppStoreLink({ className = "" }: { className?: string }) {
   return (
     <a
@@ -69,8 +80,11 @@ function AppStoreLink({ className = "" }: { className?: string }) {
       target="_blank"
       rel="noreferrer"
     >
-      <span className="store-button-small">Download on the</span>
-      <span className="store-button-main">App Store</span>
+      <AppleLogo />
+      <span className="store-button-copy">
+        <span className="store-button-small">Download on the</span>
+        <span className="store-button-main">App Store</span>
+      </span>
     </a>
   );
 }
