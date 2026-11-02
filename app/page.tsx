@@ -9,17 +9,17 @@ const features = [
   {
     number: "01",
     label: "YOUR EQUIPMENT",
-    title: "Start with the machine you actually use.",
-    body: "Browse espresso machines, choose your setup, and begin with guidance that accounts for its basket, pump, grinder needs, and pre-infusion.",
-    detail: "Machine library",
+    title: "Guidance that starts with your setup.",
+    body: "Find your espresso machine and grinder, then work from information that reflects the equipment on your counter instead of generic advice.",
+    detail: "Equipment library",
     src: "/app/machines-v2.png",
     alt: "DialedIn machine browser showing the Ascaso Steel and Breville Bambino",
   },
   {
     number: "02",
     label: "YOUR SHOT",
-    title: "Show DialedIn what happened.",
-    body: "The espresso coach identifies your setup, gathers the important shot details, and keeps the conversation focused on the next useful move.",
+    title: "Turn a difficult shot into a clear next step.",
+    body: "Share your setup, timing, taste notes, or a shot video. DialChat keeps the conversation focused and returns a practical adjustment to try next.",
     detail: "AI-assisted shot analysis",
     src: "/app/analysis-v2.png",
     alt: "DialedIn AI shot analysis conversation identifying an espresso machine",
@@ -27,8 +27,8 @@ const features = [
   {
     number: "03",
     label: "YOUR PROCESS",
-    title: "Build a repeatable brewing routine.",
-    body: "Use a practical baseline, then work through timing and taste one variable at a time. The guide stays useful while your coffee changes.",
+    title: "Build a routine you can repeat tomorrow.",
+    body: "Use a practical baseline and work through dose, yield, timing, and taste one variable at a time. The guide keeps the process grounded.",
     detail: "Brewing guide",
     src: "/app/guide-v2.png",
     alt: "DialedIn brewing guide showing a repeatable espresso workflow",
@@ -36,8 +36,8 @@ const features = [
   {
     number: "04",
     label: "YOUR CARE ROUTINE",
-    title: "Keep clean coffee tasting clean.",
-    body: "Daily, weekly, and monthly routines make maintenance easier to remember and help prevent dirty equipment from becoming a mystery variable.",
+    title: "Keep maintenance from becoming a mystery variable.",
+    body: "Straightforward daily, weekly, and monthly routines make care easier to remember and help keep old coffee oils out of the cup.",
     detail: "Cleaning guide",
     src: "/app/cleaning-v2.png",
     alt: "DialedIn cleaning guide with daily, weekly, and monthly routines",
@@ -47,18 +47,18 @@ const features = [
 const steps = [
   {
     number: "01",
-    title: "Choose your machine",
-    body: "Set the equipment you brew with and start from a relevant baseline.",
+    title: "Tell DialChat your setup",
+    body: "Choose your machine and grinder, or share a photo when you need help identifying them.",
   },
   {
     number: "02",
-    title: "Record the shot",
-    body: "Add timing, dose, yield, taste notes, or a video when you want deeper help.",
+    title: "Share what happened",
+    body: "Add the shot time, dose, yield, taste notes, or a video for timing analysis.",
   },
   {
     number: "03",
-    title: "Change one thing",
-    body: "Apply one clear recommendation and learn what moved the cup forward.",
+    title: "Try one useful adjustment",
+    body: "Get a clear recommendation, the reason behind it, and a focused change for the next shot.",
   },
 ];
 
@@ -80,6 +80,7 @@ function AppStoreLink({ className = "" }: { className?: string }) {
       href={APP_STORE_URL}
       target="_blank"
       rel="noreferrer"
+      aria-label="Download DialedIn on the App Store"
     >
       <AppleLogo />
       <span className="store-button-copy">
@@ -113,6 +114,7 @@ function GooglePlayLink({ className = "" }: { className?: string }) {
       href={GOOGLE_PLAY_URL}
       target="_blank"
       rel="noreferrer"
+      aria-label="Get DialedIn on Google Play"
     >
       <GooglePlayLogo />
       <span className="store-button-copy">
@@ -139,6 +141,7 @@ export default function Home() {
     <main>
       <MotionEffects />
       <div className="page-progress" aria-hidden="true" />
+      <a className="skip-link" href="#main-content">Skip to content</a>
 
       <header className="site-header">
         <div className="header-inner">
@@ -148,9 +151,9 @@ export default function Home() {
           </Link>
 
           <nav className="main-nav" aria-label="Main navigation">
+            <a href="#analysis">AI analysis</a>
             <a href="#features">Features</a>
-            <a href="#how-it-works">How it works</a>
-            <a href="#pro">DialedIn Pro</a>
+            <a href="#pricing">Pricing</a>
           </nav>
 
           <a className="header-download" href="#download">
@@ -159,7 +162,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero" aria-labelledby="hero-title">
+      <section className="hero" id="main-content" aria-labelledby="hero-title">
         <Image
           className="hero-media"
           src="/app/espresso-hero.jpg"
@@ -172,22 +175,30 @@ export default function Home() {
 
         <div className="hero-inner">
           <div className="hero-copy">
-            <p className="eyebrow hero-enter hero-enter-1">ESPRESSO GUIDANCE FOR YOUR EQUIPMENT</p>
+            <p className="eyebrow hero-enter hero-enter-1">AI ESPRESSO COACH FOR HOME BARISTAS</p>
             <h1 id="hero-title" className="hero-enter hero-enter-2">DialedIn</h1>
+            <p className="hero-promise hero-enter hero-enter-3">
+              Better espresso, one adjustment at a time.
+            </p>
             <p className="hero-lede hero-enter hero-enter-3">
-              Machine-aware guidance, brewing routines, and AI-assisted shot analysis in one
-              focused app for iPhone and Android.
+              Analyze your shot, understand what changed, and get a practical recommendation
+              for what to try next. Built around your machine, grinder, and coffee.
             </p>
             <div className="hero-actions hero-enter hero-enter-4" id="download">
               <StoreLinks />
-              <a className="quiet-link" href="#features">Explore the app</a>
+              <a className="quiet-link" href="#analysis">See how it works</a>
             </div>
+            <ul className="hero-proof hero-enter hero-enter-4" aria-label="Availability and plan highlights">
+              <li>iOS and Android</li>
+              <li>Free to start</li>
+              <li>3 free analyses monthly</li>
+            </ul>
           </div>
 
           <div className="hero-phone hero-enter hero-enter-3" aria-label="DialedIn app preview">
             <Image
-              src="/app/home-v2.png"
-              alt="DialedIn home screen on iPhone"
+              src="/app/analysis-v2.png"
+              alt="DialedIn AI shot analysis conversation with an equipment photo and recommendation"
               width={1206}
               height={2622}
               priority
@@ -218,17 +229,72 @@ export default function Home() {
       <section className="intro-band" id="intro">
         <div className="section-inner intro-grid">
           <div data-reveal="up">
-            <p className="section-label">YOUR ESPRESSO COPILOT</p>
-            <h2>Less guessing.<br />More repeatable coffee.</h2>
+            <p className="section-label">MADE FOR THE HOME ESPRESSO ROUTINE</p>
+            <h2>Your next shot should teach you something.</h2>
           </div>
           <div className="intro-copy" data-reveal="up" data-delay="1">
             <p>
-              Espresso changes with the machine, grinder, beans, dose, and time. DialedIn keeps
-              those details together so the next adjustment has a reason behind it.
+              Espresso changes with the machine, grinder, beans, dose, yield, and time. DialedIn
+              brings that context together so your next adjustment has a reason behind it.
             </p>
             <p>
-              Open the app at the machine, get what you need, and get back to making coffee.
+              It is a focused companion for people learning their setup, not a replacement for
+              tasting, experimenting, or building their own intuition.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="analysis-section" id="analysis" aria-labelledby="analysis-title">
+        <div className="section-inner analysis-intro">
+          <div className="analysis-copy" data-reveal="left">
+            <p className="section-label light">AI-ASSISTED SHOT ANALYSIS</p>
+            <h2 id="analysis-title">From &ldquo;what went wrong?&rdquo; to one useful next move.</h2>
+            <p>
+              DialChat gathers the details that matter, can analyze a shot video for timing, and
+              turns the result into an actionable recommendation with a confidence level and a
+              plain-language reason.
+            </p>
+            <div className="analysis-steps" aria-label="Shot analysis process">
+              {steps.map((step) => (
+                <div className="analysis-step" key={step.number}>
+                  <span>{step.number}</span>
+                  <div><strong>{step.title}</strong><p>{step.body}</p></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="analysis-demo" data-reveal="right">
+            <div className="phone-frame analysis-phone">
+              <Image
+                src="/app/analysis-v2.png"
+                alt="DialChat identifying an espresso machine and presenting a shot analysis recommendation"
+                width={1206}
+                height={2622}
+                sizes="(max-width: 720px) 64vw, 290px"
+              />
+            </div>
+            <div className="analysis-card" aria-label="Example shot analysis result">
+              <div className="analysis-card-head">
+                <div><span>Shot Analysis</span><small>medium confidence</small></div>
+                <span className="analysis-close" aria-hidden="true">&times;</span>
+              </div>
+              <div className="analysis-panel timing-panel">
+                <span>Timing</span>
+                <dl>
+                  <div><dt>Total</dt><dd>53.7s</dd></div>
+                  <div><dt>Target</dt><dd>25-32s</dd></div>
+                  <div><dt>Confidence</dt><dd>96%</dd></div>
+                </dl>
+              </div>
+              <div className="analysis-panel recommendation-panel">
+                <span>Recommendation</span>
+                <strong>Grind Coarser</strong>
+                <p>Move about 6 small steps coarser from your current setting.</p>
+                <small>Shot ran slower than the target range.</small>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -236,9 +302,9 @@ export default function Home() {
       <section className="feature-section" id="features" aria-labelledby="features-title">
         <div className="section-inner">
           <div className="section-heading" data-reveal="up">
-            <p className="section-label">INSIDE DIALEDIN</p>
-            <h2 id="features-title">Every screen earns its place.</h2>
-            <p>Real screens, paired with the job they actually help you finish.</p>
+            <p className="section-label">MORE THAN A SHOT TIMER</p>
+            <h2 id="features-title">Useful before, during, and after the shot.</h2>
+            <p>Real product screens, paired with the outcome each part of DialedIn helps you reach.</p>
           </div>
 
           <div className="feature-list">
@@ -273,97 +339,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="result-section" aria-labelledby="result-title">
-        <div className="section-inner result-grid">
-          <div className="result-copy" data-reveal="left">
-            <p className="section-label light">FROM DATA TO DIRECTION</p>
-            <h2 id="result-title">One clear move for the next shot.</h2>
-            <p>
-              DialedIn turns timing into a practical adjustment, explains why it made that call,
-              and shows its confidence without pretending every grinder is identical.
-            </p>
-          </div>
-
-          <div className="analysis-card" data-reveal="right" aria-label="Example shot analysis result">
-            <div className="analysis-card-head">
-              <div><span>Shot Analysis</span><small>medium confidence</small></div>
-              <span className="analysis-close">&times;</span>
-            </div>
-            <div className="analysis-panel timing-panel">
-              <span>Timing</span>
-              <dl>
-                <div><dt>Total</dt><dd>53.7s</dd></div>
-                <div><dt>Start</dt><dd>1.92s</dd></div>
-                <div><dt>Confidence</dt><dd>96%</dd></div>
-              </dl>
-            </div>
-            <div className="analysis-panel recommendation-panel">
-              <span>Recommendation</span>
-              <strong>Grind Coarser</strong>
-              <p>Move about 6 small steps coarser from your current setting.</p>
-              <small>Shot ran slower than the target range.</small>
-            </div>
-            <div className="analysis-proof">
-              <span>Why this setting</span>
-              <p>Shot was 21.7s outside the 25-32s target range.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="workflow-section" id="how-it-works" aria-labelledby="workflow-title">
-        <div className="section-inner">
-          <div className="section-heading compact" data-reveal="up">
-            <p className="section-label">A QUIETER WAY TO DIAL IN</p>
-            <h2 id="workflow-title">Three steps. One variable at a time.</h2>
-          </div>
-
-          <div className="steps-grid">
-            {steps.map((step, index) => (
-              <article className="step" key={step.number} data-reveal="up" data-delay={String(index)}>
-                <span>{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pro-section" id="pro" aria-labelledby="pro-title">
+      <section className="pro-section" id="pricing" aria-labelledby="pro-title">
         <div className="section-inner pro-grid">
-          <div className="pro-screen-wrap" data-reveal="left">
-            <div className="phone-frame pro-phone" aria-label="DialedIn Pro subscription screen with annual pricing">
-              <div className="pro-ui">
-                <div className="pro-ui-bar"><strong>DialedIn</strong><span>PRO</span></div>
-                <div className="pro-ui-body">
-                  <span className="pro-ui-kicker">DIALEDIN PRO</span>
-                  <h3>DialedIn Pro</h3>
-                  <p>Keep dialing in without the free monthly limit.</p>
-                  <ul>
-                    <li>Up to 20 shot analyses each month</li>
-                    <li>Keep history and recommendations together</li>
-                    <li>Restore access on any device</li>
-                  </ul>
-                  <div className="pro-ui-price">69.90 ILS <small>/ year</small></div>
-                  <div className="pro-ui-button">Start Pro</div>
-                  <p className="pro-ui-restore">Restore purchases</p>
-                </div>
-              </div>
-            </div>
+          <div className="pro-copy" data-reveal="up">
+            <p className="section-label light">DIALEDIN PLANS</p>
+            <h2 id="pro-title">Start free. Go Pro when you need more analysis.</h2>
+            <p className="pro-lede">
+              The equipment library, brewing guidance, and cleaning routines are available to
+              explore without a subscription. Monthly AI analysis limits depend on your plan.
+            </p>
           </div>
 
-          <div className="pro-copy" data-reveal="right">
-            <p className="section-label light">DIALEDIN PRO</p>
-            <h2 id="pro-title">Keep learning from every shot.</h2>
-            <p className="pro-lede">
-              Keep your shot history and recommendations together, restore access on your
-              devices, and use up to 20 AI-assisted analyses each month.
-            </p>
-            <div className="pro-meta">
-              <div><span>Plan</span><strong>Annual</strong></div>
-              <div><span>Pricing</span><strong>Localized by your app store</strong></div>
-            </div>
+          <div className="plan-grid">
+            <article className="plan plan-free" data-reveal="left">
+              <div className="plan-heading"><p>Free</p><strong>Get started</strong></div>
+              <ul>
+                <li>Up to 3 AI-assisted shot analyses each month</li>
+                <li>Browse machine and grinder information</li>
+                <li>Use brewing and cleaning guides</li>
+              </ul>
+            </article>
+            <article className="plan plan-pro" data-reveal="right">
+              <div className="plan-heading"><p>DialedIn Pro</p><strong>₪69.90 <small>/ year in Israel</small></strong></div>
+              <ul>
+                <li>Up to 20 AI-assisted shot analyses each month</li>
+                <li>Keep shot history and recommendations together</li>
+                <li>Restore Pro access on devices using your account</li>
+              </ul>
+              <p className="pricing-note">Annual subscription. Your local store shows the final price and applicable taxes before purchase.</p>
+            </article>
+          </div>
+
+          <div className="pricing-download" data-reveal="up">
+            <p>Download free on iOS or Android. Upgrade inside the app when you are ready.</p>
             <StoreLinks light />
           </div>
         </div>
@@ -372,8 +380,8 @@ export default function Home() {
       <section className="final-cta" aria-labelledby="final-title">
         <div className="section-inner final-cta-inner">
           <div data-reveal="left">
-            <p className="section-label">READY FOR THE NEXT SHOT?</p>
-            <h2 id="final-title">Make the next adjustment count.</h2>
+            <p className="section-label">AVAILABLE NOW ON IOS AND ANDROID</p>
+            <h2 id="final-title">Make the next shot count.</h2>
           </div>
           <div data-reveal="right"><StoreLinks /></div>
         </div>
