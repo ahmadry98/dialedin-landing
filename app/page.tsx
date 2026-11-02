@@ -3,6 +3,7 @@ import Link from "next/link";
 import MotionEffects from "./motion-effects";
 
 const APP_STORE_URL = "https://apps.apple.com/app/id6804373243";
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=me.dialedin.mobile&hl=en";
 
 const features = [
   {
@@ -89,6 +90,50 @@ function AppStoreLink({ className = "" }: { className?: string }) {
   );
 }
 
+function GooglePlayLogo() {
+  return (
+    <svg
+      className="store-button-icon google-play-icon"
+      viewBox="0 0 512 512"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path fill="#00d2ff" d="M55 32 305 256 55 480Z" />
+      <path fill="#00e676" d="m55 32 316 178-66 46Z" />
+      <path fill="#ffea00" d="m305 256 66 46L55 480Z" />
+      <path fill="#ff3d00" d="m371 210 90 51c23 13 23 47 0 60l-90 51-66-116Z" />
+    </svg>
+  );
+}
+
+function GooglePlayLink({ className = "" }: { className?: string }) {
+  return (
+    <a
+      className={"store-button " + className}
+      href={GOOGLE_PLAY_URL}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <GooglePlayLogo />
+      <span className="store-button-copy">
+        <span className="store-button-small">GET IT ON</span>
+        <span className="store-button-main">Google Play</span>
+      </span>
+    </a>
+  );
+}
+
+function StoreLinks({ light = false }: { light?: boolean }) {
+  const className = light ? "store-button-light" : "";
+
+  return (
+    <div className="store-links">
+      <AppStoreLink className={className} />
+      <GooglePlayLink className={className} />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main>
@@ -108,7 +153,7 @@ export default function Home() {
             <a href="#pro">DialedIn Pro</a>
           </nav>
 
-          <a className="header-download" href={APP_STORE_URL} target="_blank" rel="noreferrer">
+          <a className="header-download" href="#download">
             Get the app
           </a>
         </div>
@@ -131,10 +176,10 @@ export default function Home() {
             <h1 id="hero-title" className="hero-enter hero-enter-2">DialedIn</h1>
             <p className="hero-lede hero-enter hero-enter-3">
               Machine-aware guidance, brewing routines, and AI-assisted shot analysis in one
-              focused iPhone app.
+              focused app for iPhone and Android.
             </p>
-            <div className="hero-actions hero-enter hero-enter-4">
-              <AppStoreLink />
+            <div className="hero-actions hero-enter hero-enter-4" id="download">
+              <StoreLinks />
               <a className="quiet-link" href="#features">Explore the app</a>
             </div>
           </div>
@@ -317,9 +362,9 @@ export default function Home() {
             </p>
             <div className="pro-meta">
               <div><span>Plan</span><strong>Annual</strong></div>
-              <div><span>Pricing</span><strong>Localized by Apple</strong></div>
+              <div><span>Pricing</span><strong>Localized by your app store</strong></div>
             </div>
-            <AppStoreLink className="store-button-light" />
+            <StoreLinks light />
           </div>
         </div>
       </section>
@@ -330,7 +375,7 @@ export default function Home() {
             <p className="section-label">READY FOR THE NEXT SHOT?</p>
             <h2 id="final-title">Make the next adjustment count.</h2>
           </div>
-          <div data-reveal="right"><AppStoreLink /></div>
+          <div data-reveal="right"><StoreLinks /></div>
         </div>
       </section>
 
